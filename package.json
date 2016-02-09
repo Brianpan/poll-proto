@@ -1,0 +1,30 @@
+{
+  "name": "poll",
+  "version": "1.0.0",
+  "description": "poll system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build"
+  },
+  "keywords": [
+    "poll",
+    "system",
+    "vote"
+  ],
+  "author": "Brian Pan",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.5.1",
+    "babel-loader": "^6.2.2",
+    "history": "^2.0.0",
+    "jsx-loader": "^0.13.2",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-hot-loader": "^1.3.0",
+    "react-router": "^1.0.3",
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

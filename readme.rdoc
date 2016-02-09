@@ -1,0 +1,21 @@
+# 安裝package
+npm install react react-router react-dom webpack wepack-dev-server \
+			react-hot-loader babel-core babel-loader jsx-loader history --save
+
+# webpack live reload
+entry 加上 'webpack-dev-server/client?http://localhost:8080'
+		   'webpack/hot/only-dev-server'
+
+## 在 module - loader下面
+{
+	test: /\.jsx$/,
+	loaders: ['react-hot-loader', 'babel-loader', 'jsx-loader']
+}
+
+## html 裡面加上
+<script src="http://localhost:8080/webpack-dev-server.js"></script>	
+
+## package.json
+"dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build"
+
+
