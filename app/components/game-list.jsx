@@ -17,7 +17,8 @@ module.exports = React.createClass({
       return <Game game={game} 
       			   key={"game_d_"+game} 
       			   handle_poll={this.props.handle_poll}
-      			   polled_games={this.props.polled_games} />
+      			   polled_games={this.props.polled_games} 
+               auth={this.props.auth} />
   	}.bind(this));
   }
 });

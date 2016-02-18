@@ -6,6 +6,12 @@ npm install react react-router react-dom webpack wepack-dev-server \
 entry 加上 'webpack-dev-server/client?http://localhost:8080'
 		   'webpack/hot/only-dev-server'
 
+# 安裝lodash, reflux, fetch
+npm install --save lodash reflux whatwg-fetch
+
+# 一些cheatsheets 
+http://runfastlynda.com/%E5%8D%9A%E5%AE%A2/2015/11/18/learn-react-2.html
+
 ## 在 module - loader下面
 {
 	test: /\.jsx$/,

@@ -21,17 +21,19 @@ module.exports = React.createClass({
   },
   resetButton: function(){
     if(this.props.polled_games.length == 0){
-      console.log("~");
       this.setState({voted: false});
     }
   },
   renderPollButton: function(id){
-    return <button className="btn btn-info btn-xs" 
-        		onClick={this.handleClickButton}
-        		data-key={"game_" + id}
+    if(this.props.auth){
+      return <button className="btn btn-info btn-xs" 
+            onClick={this.handleClickButton}
+            data-key={"game_" + id}
             disabled={this.state.voted ? "disabled" : null}>
-        	投票
+          投票
         </button>
+    }
+    
   },
   //用props來把child component的東西和parent溝通
   handleClickButton: function(event){

@@ -1,13 +1,28 @@
 var React = require('react');
-// var _ = require('lodash');
+var Reflux = require('reflux');
+var _ = require('lodash');
 
 var Header = require('./header');
 var GameList = require('./game-list');
 var PollList = require('./poll-list');
+var EmailBox = require('./email-box');
+
+var Actions = require('../actions');
+var AuthorizationStore = require('../stores/authorization-store');
 
 module.exports = React.createClass({
+  mixins: [
+    Reflux.listenTo(AuthorizationStore, 'onAuth')
+  ],
   getInitialState: function(){
-    return {games: [], reset: false}
+    return {
+            games: [], 
+            reset: false,
+            auth: false
+            }
+  },
+  componentWillMount: function(){
+    Actions.getAuth();
   },
   render: function(){
   	return <div>
@@ -24,14 +39,23 @@ module.exports = React.createClass({
   	}else{
   	  return <div className="row"> 
   	    <div className="col-md-8">
-  	      <GameList handle_poll={this.handlePoll} polled_games = {this.state.games} />
+  	      <GameList handle_poll={this.handlePoll} 
+                    polled_games = {this.state.games}
+                    auth = {this.state.auth} />
   	    </div>
   	    <div className="col-md-4">
-  	      <PollList games={this.state.games}
-  	      			reset_poll={this.handleResetPoll} />
+          {this.renderPollList()}
   	    </div>	
   	  </div>
   	}
+  },
+  renderPollList: function(){
+    if(this.state.auth){
+      return <PollList games={this.state.games}
+                reset_poll={this.handleResetPoll} />
+    }else{
+      return <EmailBox />
+    }
   },
   handlePoll: function(game_id){
   	var current_games = this.state.games;
@@ -41,5 +65,8 @@ module.exports = React.createClass({
   },
   handleResetPoll: function(){
   	this.setState({games: []});
+  },
+  onAuth: function(event, auth_status){
+    this.setState({auth: auth_status});
   }	
 })
