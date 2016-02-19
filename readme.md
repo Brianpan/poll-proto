@@ -1,10 +1,8 @@
-
-React/Reflux 投票系統前端
+# React/Reflux 投票系統前端
 ====
-###Getting Started###
+##Getting Started
 
 ---
-
 
 ```
 	> npm install
@@ -12,9 +10,10 @@ React/Reflux 投票系統前端
 ```
 
 ====
-###Memo###
+## Memo
 ---
-# 安裝package
+## 安裝package
+```
 npm install react react-router react-dom webpack wepack-dev-server \
 			react-hot-loader babel-core babel-loader jsx-loader history --save
 
@@ -39,5 +38,5 @@ http://runfastlynda.com/%E5%8D%9A%E5%AE%A2/2015/11/18/learn-react-2.html
 
 ## package.json
 "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build"
-
+```
 
