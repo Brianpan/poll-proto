@@ -1,18 +1,14 @@
 # React/Reflux 投票系統前端
-====
-##Getting Started
 
----
+##Getting Started
 
 ```
 	> npm install
 	> npm run dev
 ```
 
-====
-## Memo
----
-## 安裝package
+## Memo 筆記
+
 ```
 npm install react react-router react-dom webpack wepack-dev-server \
 			react-hot-loader babel-core babel-loader jsx-loader history --save
