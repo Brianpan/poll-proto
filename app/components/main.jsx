@@ -9,10 +9,12 @@ var EmailBox = require('./email-box');
 
 var Actions = require('../actions');
 var AuthorizationStore = require('../stores/authorization-store');
+var VoteStore = require('../stores/vote-store');
 
 module.exports = React.createClass({
   mixins: [
-    Reflux.listenTo(AuthorizationStore, 'onAuth')
+    Reflux.listenTo(AuthorizationStore, 'onAuth'),
+    Reflux.listenTo(VoteStore, 'onRemoveVote')
   ],
   getInitialState: function(){
     return {
@@ -68,5 +70,14 @@ module.exports = React.createClass({
   },
   onAuth: function(event, auth_status){
     this.setState({auth: auth_status});
+  },
+  onRemoveVote: function(event, remove_vote){
+    var game_list = this.state.games;
+
+    var new_game_list = game_list.filter(function(n){
+      return n != remove_vote
+    });
+
+    this.setState({games: new_game_list});
   }	
 })

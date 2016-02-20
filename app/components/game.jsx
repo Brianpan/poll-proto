@@ -1,6 +1,12 @@
 var React = require('react');
 
+var Reflux = require('reflux');
+var VoteStore = require('../stores/vote-store');
+
 module.exports = React.createClass({
+  mixins: [
+    Reflux.listenTo(VoteStore, 'onRemoveVote')
+  ],
   getInitialState: function(){
     return {voted: false}
   },
@@ -39,5 +45,11 @@ module.exports = React.createClass({
   handleClickButton: function(event){
     this.setState({voted: true});
     this.props.handle_poll(this.props.game);
+  },
+  //trigger remove 掉vote之後 voted state 要改回
+  onRemoveVote: function(event, remove_vote){
+    if(this.props.game == remove_vote){
+      this.setState({voted: false});
+    }
   }
 });

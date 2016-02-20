@@ -6,7 +6,7 @@ var Actions = require('../actions');
 module.exports = Reflux.createStore({
   listenables: [Actions],
   getAuth: function(){
-  	this.auth = false;
+  	this.auth = true;
   	this.triggerChange();
   },
   triggerChange: function(){

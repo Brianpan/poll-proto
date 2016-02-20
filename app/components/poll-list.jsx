@@ -1,5 +1,8 @@
 var React = require('react');
 
+var Actions = require('../actions');
+var PollItem = require('./poll-item');
+
 module.exports = React.createClass({
   
   render: function(){
@@ -16,9 +19,8 @@ module.exports = React.createClass({
   },
   renderPolls: function(){
   	return this.props.games.map(function(poll){
-      return <li className="list-group-item" key={"poll_" + poll}>
-      	{poll}
-      </li>
+      return <PollItem poll={poll}
+                       key={"poll_" + poll} />
   	});
   },
   renderResetButton: function(){
